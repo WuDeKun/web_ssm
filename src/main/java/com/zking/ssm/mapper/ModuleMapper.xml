@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.ModuleMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Module" >
+    <constructor >
+      <arg column="id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="text" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="moduleurl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="moduleicon" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="modulesort" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ssm.model.Module" >
+    insert into t_module (id, pid, text, 
+      moduleurl, moduleicon, modulesort
+      )
+    values (#{id,jdbcType=VARCHAR}, #{pid,jdbcType=VARCHAR}, #{text,jdbcType=VARCHAR}, 
+      #{moduleurl,jdbcType=VARCHAR}, #{moduleicon,jdbcType=VARCHAR}, #{modulesort,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.model.Module" >
+    insert into t_module
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="text != null" >
+        text,
+      </if>
+      <if test="moduleurl != null" >
+        moduleurl,
+      </if>
+      <if test="moduleicon != null" >
+        moduleicon,
+      </if>
+      <if test="modulesort != null" >
+        modulesort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null" >
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="text != null" >
+        #{text,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleurl != null" >
+        #{moduleurl,jdbcType=VARCHAR},
+      </if>
+      <if test="moduleicon != null" >
+        #{moduleicon,jdbcType=VARCHAR},
+      </if>
+      <if test="modulesort != null" >
+        #{modulesort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="queryModuleTree" resultType="map" parameterType="com.zking.ssm.model.Module">
+    select id,pid,text,moduleurl,moduleicon,modulesort from t_module
+    where 1=1
+    <if test="null!=pid and 0!=pid">
+       and pid=#{pid}
+    </if>
+  </select>
+</mapper>
