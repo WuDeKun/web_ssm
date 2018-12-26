@@ -35,7 +35,7 @@ public class HomeController {
     @RequestMapping(value="toHomeL")
     public String toHomeL(RedirectAttributes model){
         System.out.println(model);
-        System.out.println("dsdsssssssssssssssssssssssssssssss");
+        System.out.println("dsdssssssssssssssssssssssssssssssssssssssssssssssssseeeeeeeeeeeeeeesssss");
 
         return "welcome";
     }
