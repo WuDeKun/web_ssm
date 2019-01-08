@@ -11,5 +11,5 @@ public interface ModuleMapper {
     int insert(Module record);
 
     int insertSelective(Module record);
-    List<Map<String,Object>> queryModuleTree(Module module);
+    List<Module> queryModuleTree(Module module);
 }

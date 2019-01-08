@@ -29,7 +29,7 @@ public class IModuleServiceImpl implements IModuleService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Map<String, Object>> queryModuleTree(Module module) {
+    public List<Module> queryModuleTree(Module module) {
         return moduleMapper.queryModuleTree(module);
     }
 }

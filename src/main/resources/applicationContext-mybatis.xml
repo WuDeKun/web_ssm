@@ -5,6 +5,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
+
     <!--1. 注解式开发 -->
     <!-- 注解驱动 -->
     <context:annotation-config/>
@@ -33,6 +34,7 @@
         <!--设置为-1时，如果没有可用连接，连接池会一直无限期等待，直到获取到连接为止。-->
         <!--如果设置为N（毫秒），则连接池会等待N毫秒，等待不到，则抛出异常-->
         <property name="maxWaitMillis" value="-1"/>
+
     </bean>
 
     <!--4. spring和MyBatis整合 -->
@@ -67,6 +69,8 @@
                 <prop key="aggressiveLazyLoading">true</prop>
             </props>
         </property>
+       <!-- &lt;!&ndash; 配置mybatis-config.xml &ndash;&gt;
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>-->
     </bean>
 
     <!--2) 自动扫描com/zking/oa/**/mapper下的所有XxxMapper接口(其实就是DAO接口)，并实现这些接口，-->
@@ -87,5 +91,6 @@
 
  <!--   2.6 开启动态代理-->
     <aop:aspectj-autoproxy/>
+
 
 </beans>

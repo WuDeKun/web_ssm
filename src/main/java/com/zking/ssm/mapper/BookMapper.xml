@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.mapper.BookMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.model.Book" >
+    <constructor >
+      <idArg column="book_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_name_pinyin" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_category_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_author" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_price" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="book_image" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="publishing" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="book_state" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="deploy_datetime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sales_volume" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    book_id AS bookId , book_name as bookName,book_category_id as bookCategoryId, book_price as bookPrice,
+    book_image as bookImage
+  </sql>
+
+  <insert id="insert" parameterType="com.zking.ssm.model.Book" >
+    insert into t_book (book_id, book_name, book_name_pinyin,
+      book_category_id, book_author, book_price,
+      book_image, publishing, book_desc,
+      book_state, deploy_datetime, sales_volume
+      )
+    values (#{bookId,jdbcType=VARCHAR}, #{bookName,jdbcType=VARCHAR}, #{bookNamePinyin,jdbcType=VARCHAR},
+      #{bookCategoryId,jdbcType=VARCHAR}, #{bookAuthor,jdbcType=VARCHAR}, #{bookPrice,jdbcType=REAL},
+      #{bookImage,jdbcType=VARCHAR}, #{publishing,jdbcType=VARCHAR}, #{bookDesc,jdbcType=VARCHAR},
+      #{bookState,jdbcType=INTEGER}, #{deployDatetime,jdbcType=VARCHAR}, #{salesVolume,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="upateByBook" parameterType="com.zking.ssm.model.Book">
+    update t_book set book_image=#{bookImage} where book_id=#{bookId}
+  </update>
+  <select id="queryBookPager" resultType="com.zking.ssm.model.Book" parameterType="com.zking.ssm.model.Book">
+    select <include refid="Base_Column_List"/>
+    from t_book
+    <if test="bookName!=null and ''!=bookName">
+      where book_name like concat(concat('%',#{bookName}),'%')
+    </if>
+  </select>
+</mapper>

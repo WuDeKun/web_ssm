@@ -26,6 +26,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
+
         <!-- 01 指定javaBean生成的位置 -->
         <!-- targetPackage：指定生成的model生成所在的包名 -->
         <!-- targetProject：指定在该项目下所在的路径  -->
@@ -40,6 +41,7 @@
             <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
             <property name="immutable" value="false"/>
         </javaModelGenerator>
+
 
         <!-- 02 指定sql映射文件生成的位置 -->
         <sqlMapGenerator targetPackage="com.zking.ssm.mapper"
@@ -74,30 +76,24 @@
 
 
 
-        <table schema="" tableName="t_news" domainObjectName="News"
+      <!--  <table schema="" tableName="t_book" domainObjectName="Book"
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false">
-     <!--  &lt;!&ndash; &lt;!&ndash;   &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;
+         &lt;!&ndash;   <property name="useActualColumnNames" value="true" />&ndash;&gt;
+     &lt;!&ndash;  &lt;!&ndash; &lt;!&ndash;   &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;
            &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;
            &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;
            &lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;&ndash;&gt;
--->        </table>
-        <table schema="" tableName="t_category" domainObjectName="Category"
+&ndash;&gt;        </table>
+        <table schema="" tableName="t_file" domainObjectName="File"
                enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false">
-       <!--   &lt;!&ndash;  &lt;!&ndash;   &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;
-               &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;
-               &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;
-               &lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;&ndash;&gt;
--->        </table>
-        <table schema="" tableName="t_news_category" domainObjectName="News_category"
-               enableCountByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" enableUpdateByExample="false">
-            <!--   &lt;!&ndash;  &lt;!&ndash;   &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;
+          &lt;!&ndash;  &lt;!&ndash;   &lt;!&ndash;  &lt;!&ndash;   &lt;!&ndash; 忽略列，不生成bean 字段 &ndash;&gt;
                     &lt;!&ndash; <ignoreColumn column="FRED" /> &ndash;&gt;
                     &lt;!&ndash; 指定列的java数据类型 &ndash;&gt;
                     &lt;!&ndash; <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;&ndash;&gt;&ndash;&gt;
-     -->        </table>
+                    &ndash;&gt;&ndash;&gt;
+        </table>-->
     </context>
 
 </generatorConfiguration>

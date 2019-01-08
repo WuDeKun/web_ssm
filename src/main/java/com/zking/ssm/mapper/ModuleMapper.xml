@@ -62,11 +62,8 @@
       </if>
     </trim>
   </insert>
-  <select id="queryModuleTree" resultType="map" parameterType="com.zking.ssm.model.Module">
+  <select id="queryModuleTree" resultMap="BaseResultMap" parameterType="com.zking.ssm.model.Module">
     select id,pid,text,moduleurl,moduleicon,modulesort from t_module
     where 1=1
-    <if test="null!=pid and 0!=pid">
-       and pid=#{pid}
-    </if>
   </select>
 </mapper>
